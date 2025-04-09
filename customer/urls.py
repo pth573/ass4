@@ -1,11 +1,11 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import CustomerViewSet
+from django.urls import path
+from .views import RegisterAPIView, CustomerListCreateView, CustomerDetailView
 
-# Sử dụng router để tự động tạo URL CRUD cho Customer
-router = DefaultRouter()
-router.register(r'customers', CustomerViewSet, basename='customer')
+from .views import LoginAPIView
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('customers/register/', RegisterAPIView.as_view(), name='customer-register'),
+    path('customers/login/', LoginAPIView.as_view(), name='customer-login'),  
+    path('customers/', CustomerListCreateView.as_view(), name='customer-list-create'),
+    path('customers/<int:pk>/', CustomerDetailView.as_view(), name='customer-detail'),
 ]
