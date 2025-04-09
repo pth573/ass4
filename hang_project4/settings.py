@@ -104,17 +104,28 @@ WSGI_APPLICATION = 'hang_project4.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # Loại cơ sở dữ liệu sử dụng
+#         'NAME': 'django_db',  # Tên cơ sở dữ liệu
+#         'USER': 'django_user',  # Tên người dùng MySQL
+#         'PASSWORD': 'django_pass',  # Mật khẩu người dùng
+#         'HOST': 'localhost',  # Địa chỉ của máy chủ MySQL (thường là 'localhost' hoặc IP của máy chủ)
+#         'PORT': '3315',  # Cổng MySQL mặc định
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Loại cơ sở dữ liệu sử dụng
-        'NAME': 'django_db',  # Tên cơ sở dữ liệu
-        'USER': 'django_user',  # Tên người dùng MySQL
-        'PASSWORD': 'django_pass',  # Mật khẩu người dùng
-        'HOST': 'localhost',  # Địa chỉ của máy chủ MySQL (thường là 'localhost' hoặc IP của máy chủ)
-        'PORT': '3315',  # Cổng MySQL mặc định
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'django_db',  
+        'USER': 'django_user', 
+        'PASSWORD': 'django_pass',  
+        'HOST': 'db', 
+        'PORT': '3306', 
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

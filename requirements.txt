@@ -1,0 +1,16 @@
+# # mysqlclient
+# RUN pip install django mysqlclient
+
+# django
+django<=3.1.12
+mysqlclient
+djangorestframework 
+# djongo
+# djongo==1.3.6
+djongo>=1.3.6
+psycopg2-binary
+requests
+joblib
+numpy
+pandas
+scikit-learn
