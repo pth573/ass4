@@ -1,0 +1,1245 @@
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: django_db
+-- ------------------------------------------------------
+-- Server version	9.2.0
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `auth_group`
+--
+
+DROP TABLE IF EXISTS `auth_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_group` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group`
+--
+
+LOCK TABLES `auth_group` WRITE;
+/*!40000 ALTER TABLE `auth_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_group_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_group_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_group_permissions` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `group_id` int NOT NULL,
+  `permission_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` (`group_id`,`permission_id`),
+  KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`),
+  CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+  CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group_permissions`
+--
+
+LOCK TABLES `auth_group_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_group_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_permission`
+--
+
+DROP TABLE IF EXISTS `auth_permission`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_permission` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `content_type_id` int NOT NULL,
+  `codename` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
+  CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_permission`
+--
+
+LOCK TABLES `auth_permission` WRITE;
+/*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',2,'add_permission'),(6,'Can change permission',2,'change_permission'),(7,'Can delete permission',2,'delete_permission'),(8,'Can view permission',2,'view_permission'),(9,'Can add group',3,'add_group'),(10,'Can change group',3,'change_group'),(11,'Can delete group',3,'delete_group'),(12,'Can view group',3,'view_group'),(13,'Can add user',4,'add_user'),(14,'Can change user',4,'change_user'),(15,'Can delete user',4,'delete_user'),(16,'Can view user',4,'view_user'),(17,'Can add content type',5,'add_contenttype'),(18,'Can change content type',5,'change_contenttype'),(19,'Can delete content type',5,'delete_contenttype'),(20,'Can view content type',5,'view_contenttype'),(21,'Can add session',6,'add_session'),(22,'Can change session',6,'change_session'),(23,'Can delete session',6,'delete_session'),(24,'Can view session',6,'view_session'),(25,'Can add address',7,'add_address'),(26,'Can change address',7,'change_address'),(27,'Can delete address',7,'delete_address'),(28,'Can view address',7,'view_address'),(29,'Can add full name',8,'add_fullname'),(30,'Can change full name',8,'change_fullname'),(31,'Can delete full name',8,'delete_fullname'),(32,'Can view full name',8,'view_fullname'),(33,'Can add customer',9,'add_customer'),(34,'Can change customer',9,'change_customer'),(35,'Can delete customer',9,'delete_customer'),(36,'Can view customer',9,'view_customer'),(37,'Can add regular customer',10,'add_regularcustomer'),(38,'Can change regular customer',10,'change_regularcustomer'),(39,'Can delete regular customer',10,'delete_regularcustomer'),(40,'Can view regular customer',10,'view_regularcustomer'),(41,'Can add vip customer',11,'add_vipcustomer'),(42,'Can change vip customer',11,'change_vipcustomer'),(43,'Can delete vip customer',11,'delete_vipcustomer'),(44,'Can view vip customer',11,'view_vipcustomer'),(45,'Can add author',12,'add_author'),(46,'Can change author',12,'change_author'),(47,'Can delete author',12,'delete_author'),(48,'Can view author',12,'view_author'),(49,'Can add genre',13,'add_genre'),(50,'Can change genre',13,'change_genre'),(51,'Can delete genre',13,'delete_genre'),(52,'Can view genre',13,'view_genre'),(53,'Can add publisher',14,'add_publisher'),(54,'Can change publisher',14,'change_publisher'),(55,'Can delete publisher',14,'delete_publisher'),(56,'Can view publisher',14,'view_publisher'),(57,'Can add book',15,'add_book'),(58,'Can change book',15,'change_book'),(59,'Can delete book',15,'delete_book'),(60,'Can view book',15,'view_book'),(61,'Can add brand',16,'add_brand'),(62,'Can change brand',16,'change_brand'),(63,'Can delete brand',16,'delete_brand'),(64,'Can view brand',16,'view_brand'),(65,'Can add gpu',17,'add_gpu'),(66,'Can change gpu',17,'change_gpu'),(67,'Can delete gpu',17,'delete_gpu'),(68,'Can view gpu',17,'view_gpu'),(69,'Can add screen',18,'add_screen'),(70,'Can change screen',18,'change_screen'),(71,'Can delete screen',18,'delete_screen'),(72,'Can view screen',18,'view_screen'),(73,'Can add storage',19,'add_storage'),(74,'Can change storage',19,'change_storage'),(75,'Can delete storage',19,'delete_storage'),(76,'Can view storage',19,'view_storage'),(77,'Can add laptop',20,'add_laptop'),(78,'Can change laptop',20,'change_laptop'),(79,'Can delete laptop',20,'delete_laptop'),(80,'Can view laptop',20,'view_laptop'),(81,'Can add battery',21,'add_battery'),(82,'Can change battery',21,'change_battery'),(83,'Can delete battery',21,'delete_battery'),(84,'Can view battery',21,'view_battery'),(85,'Can add brand',22,'add_brand'),(86,'Can change brand',22,'change_brand'),(87,'Can delete brand',22,'delete_brand'),(88,'Can view brand',22,'view_brand'),(89,'Can add camera',23,'add_camera'),(90,'Can change camera',23,'change_camera'),(91,'Can delete camera',23,'delete_camera'),(92,'Can view camera',23,'view_camera'),(93,'Can add screen',24,'add_screen'),(94,'Can change screen',24,'change_screen'),(95,'Can delete screen',24,'delete_screen'),(96,'Can view screen',24,'view_screen'),(97,'Can add storage',25,'add_storage'),(98,'Can change storage',25,'change_storage'),(99,'Can delete storage',25,'delete_storage'),(100,'Can view storage',25,'view_storage'),(101,'Can add mobile',26,'add_mobile'),(102,'Can change mobile',26,'change_mobile'),(103,'Can delete mobile',26,'delete_mobile'),(104,'Can view mobile',26,'view_mobile'),(105,'Can add brand',27,'add_brand'),(106,'Can change brand',27,'change_brand'),(107,'Can delete brand',27,'delete_brand'),(108,'Can view brand',27,'view_brand'),(109,'Can add color',28,'add_color'),(110,'Can change color',28,'change_color'),(111,'Can delete color',28,'delete_color'),(112,'Can view color',28,'view_color'),(113,'Can add material',29,'add_material'),(114,'Can change material',29,'change_material'),(115,'Can delete material',29,'delete_material'),(116,'Can view material',29,'view_material'),(117,'Can add size',30,'add_size'),(118,'Can change size',30,'change_size'),(119,'Can delete size',30,'delete_size'),(120,'Can view size',30,'view_size'),(121,'Can add clothes',31,'add_clothes'),(122,'Can change clothes',31,'change_clothes'),(123,'Can delete clothes',31,'delete_clothes'),(124,'Can view clothes',31,'view_clothes'),(125,'Can add order',32,'add_order'),(126,'Can change order',32,'change_order'),(127,'Can delete order',32,'delete_order'),(128,'Can view order',32,'view_order'),(129,'Can add order item',33,'add_orderitem'),(130,'Can change order item',33,'change_orderitem'),(131,'Can delete order item',33,'delete_orderitem'),(132,'Can view order item',33,'view_orderitem'),(133,'Can add product',34,'add_product'),(134,'Can change product',34,'change_product'),(135,'Can delete product',34,'delete_product'),(136,'Can view product',34,'view_product'),(137,'Can add cart item',35,'add_cartitem'),(138,'Can change cart item',35,'change_cartitem'),(139,'Can delete cart item',35,'delete_cartitem'),(140,'Can view cart item',35,'view_cartitem'),(141,'Can add review',36,'add_review'),(142,'Can change review',36,'change_review'),(143,'Can delete review',36,'delete_review'),(144,'Can view review',36,'view_review'),(145,'Can add recommendation',37,'add_recommendation'),(146,'Can change recommendation',37,'change_recommendation'),(147,'Can delete recommendation',37,'delete_recommendation'),(148,'Can view recommendation',37,'view_recommendation'),(149,'Can add payment',38,'add_payment'),(150,'Can change payment',38,'change_payment'),(151,'Can delete payment',38,'delete_payment'),(152,'Can view payment',38,'view_payment'),(153,'Can add shipping',39,'add_shipping'),(154,'Can change shipping',39,'change_shipping'),(155,'Can delete shipping',39,'delete_shipping'),(156,'Can view shipping',39,'view_shipping');
+/*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user`
+--
+
+DROP TABLE IF EXISTS `auth_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime(6) DEFAULT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(150) NOT NULL,
+  `first_name` varchar(150) NOT NULL,
+  `last_name` varchar(150) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user`
+--
+
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_groups`
+--
+
+DROP TABLE IF EXISTS `auth_user_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_user_groups` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `group_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_user_groups_user_id_group_id_94350c0c_uniq` (`user_id`,`group_id`),
+  KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`),
+  CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
+  CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_groups`
+--
+
+LOCK TABLES `auth_user_groups` WRITE;
+/*!40000 ALTER TABLE `auth_user_groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_user_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_user_user_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `auth_user_user_permissions` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `permission_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` (`user_id`,`permission_id`),
+  KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`),
+  CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+  CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_user_permissions`
+--
+
+LOCK TABLES `auth_user_user_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_user_user_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_user_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_author`
+--
+
+DROP TABLE IF EXISTS `book_author`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `book_author` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `birth_date` date DEFAULT NULL,
+  `nationality` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_author`
+--
+
+LOCK TABLES `book_author` WRITE;
+/*!40000 ALTER TABLE `book_author` DISABLE KEYS */;
+INSERT INTO `book_author` VALUES (1,'J.K. Rowling','1965-07-31','British'),(2,'George R.R. Martin','1948-09-20','American'),(3,'Agatha Christie','1890-09-15','British'),(4,'Stephen King','1947-09-21','American'),(5,'Haruki Murakami','1949-01-12','Japanese'),(6,'J.K. Rowling','1965-07-31','British'),(7,'George Orwell','1903-06-25','British'),(8,'Harper Lee','1926-04-28','American'),(9,'J.R.R. Tolkien','1892-01-03','British'),(10,'Agatha Christie','1890-09-15','British');
+/*!40000 ALTER TABLE `book_author` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_book`
+--
+
+DROP TABLE IF EXISTS `book_book`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `book_book` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `pages` int DEFAULT NULL,
+  `author_id` bigint DEFAULT NULL,
+  `genre_id` bigint DEFAULT NULL,
+  `language` varchar(50) DEFAULT NULL,
+  `publisher_id` bigint DEFAULT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `quantity` int unsigned NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `book_book_author_id_40846805_fk` (`author_id`),
+  KEY `book_book_genre_id_bc3e2c4b_fk` (`genre_id`),
+  KEY `book_book_publisher_id_7f77c06a_fk` (`publisher_id`),
+  CONSTRAINT `book_book_author_id_40846805_fk` FOREIGN KEY (`author_id`) REFERENCES `book_author` (`id`),
+  CONSTRAINT `book_book_genre_id_bc3e2c4b_fk` FOREIGN KEY (`genre_id`) REFERENCES `book_genre` (`id`),
+  CONSTRAINT `book_book_publisher_id_7f77c06a_fk` FOREIGN KEY (`publisher_id`) REFERENCES `book_publisher` (`id`),
+  CONSTRAINT `book_book_chk_1` CHECK ((`quantity` >= 0))
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_book`
+--
+
+LOCK TABLES `book_book` WRITE;
+/*!40000 ALTER TABLE `book_book` DISABLE KEYS */;
+INSERT INTO `book_book` VALUES (1,320,1,4,'English',1,19.99,78,'The Silent Forest'),(2,850,2,3,'English',2,25.99,50,'Echoes of the Past'),(3,450,3,6,'English',3,15.99,200,'Whispers in the Wind'),(4,1150,4,1,'English',4,35.99,75,'The Lost Kingdom'),(5,300,5,5,'Japanese',5,22.99,150,'Beneath the Waves'),(6,320,1,1,'English',1,19.99,100,'Shadows of Time'),(7,328,2,2,'English',2,14.99,150,'Crimson Horizon'),(8,281,3,3,'English',3,12.99,200,'Midnight Bloom'),(9,423,4,4,'English',4,18.99,80,'The Wandering Flame'),(10,320,5,5,'English',5,9.99,120,'Frozen Echo'),(11,320,1,4,'English',11,19.99,100,'Desert of Dreams'),(12,320,1,4,'English',11,19.99,100,'Garden of Secrets');
+/*!40000 ALTER TABLE `book_book` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_genre`
+--
+
+DROP TABLE IF EXISTS `book_genre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `book_genre` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_genre`
+--
+
+LOCK TABLES `book_genre` WRITE;
+/*!40000 ALTER TABLE `book_genre` DISABLE KEYS */;
+INSERT INTO `book_genre` VALUES (1,'Fiction'),(2,'Non-fiction'),(3,'Science Fiction'),(4,'Fantasy'),(5,'Biography'),(6,'Mystery'),(7,'Romance'),(8,'Fiction'),(9,'Science Fiction'),(10,'Fantasy'),(11,'Biography'),(12,'Romance');
+/*!40000 ALTER TABLE `book_genre` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_publisher`
+--
+
+DROP TABLE IF EXISTS `book_publisher`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `book_publisher` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `founded_year` int DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_publisher`
+--
+
+LOCK TABLES `book_publisher` WRITE;
+/*!40000 ALTER TABLE `book_publisher` DISABLE KEYS */;
+INSERT INTO `book_publisher` VALUES (1,'Penguin Random House',1927,'United States'),(2,'HarperCollins',1989,'United States'),(3,'Macmillan',1843,'United States'),(4,'Simon & Schuster',1924,'United States'),(5,'Hachette Livre',1826,'France'),(6,'Penguin Random House',1927,'USA'),(7,'HarperCollins',1989,'USA'),(8,'Macmillan Publishers',1843,'UK'),(9,'Hachette Livre',1826,'France'),(10,'Simon & Schuster',1924,'USA'),(11,'Bloomsbury',1986,'United Kingdom');
+/*!40000 ALTER TABLE `book_publisher` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cart_cartitem`
+--
+
+DROP TABLE IF EXISTS `cart_cartitem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cart_cartitem` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `category` varchar(10) NOT NULL,
+  `product_id` int NOT NULL,
+  `quantity` int unsigned NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `customer_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `cart_cartitem_quantity_680030c0_check` CHECK ((`quantity` >= 0))
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart_cartitem`
+--
+
+LOCK TABLES `cart_cartitem` WRITE;
+/*!40000 ALTER TABLE `cart_cartitem` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cart_cartitem` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `clothes_brand`
+--
+
+DROP TABLE IF EXISTS `clothes_brand`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `clothes_brand` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `established_year` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clothes_brand`
+--
+
+LOCK TABLES `clothes_brand` WRITE;
+/*!40000 ALTER TABLE `clothes_brand` DISABLE KEYS */;
+INSERT INTO `clothes_brand` VALUES (1,'Nike','USA',1964),(2,'Adidas','Germany',1949),(3,'Puma','Germany',1948),(4,'Reebok','USA',1958),(5,'Under Armour','USA',1996),(6,'Fila','Italy',1911),(7,'New Balance','USA',1906),(8,'Converse','USA',1908),(9,'Asics','Japan',1949),(10,'Vans','USA',1966);
+/*!40000 ALTER TABLE `clothes_brand` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `clothes_clothes`
+--
+
+DROP TABLE IF EXISTS `clothes_clothes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `clothes_clothes` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `brand_id` bigint NOT NULL,
+  `color_id` bigint DEFAULT NULL,
+  `material_id` bigint DEFAULT NULL,
+  `size_id` bigint DEFAULT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `quantity` int unsigned NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `clothes_clothes_brand_id_c011bbef_fk` (`brand_id`),
+  KEY `clothes_clothes_color_id_3d0debe1_fk` (`color_id`),
+  KEY `clothes_clothes_material_id_48303267_fk` (`material_id`),
+  KEY `clothes_clothes_size_id_0afdf6a8_fk` (`size_id`),
+  CONSTRAINT `clothes_clothes_brand_id_c011bbef_fk` FOREIGN KEY (`brand_id`) REFERENCES `clothes_brand` (`id`),
+  CONSTRAINT `clothes_clothes_color_id_3d0debe1_fk` FOREIGN KEY (`color_id`) REFERENCES `clothes_color` (`id`),
+  CONSTRAINT `clothes_clothes_material_id_48303267_fk` FOREIGN KEY (`material_id`) REFERENCES `clothes_material` (`id`),
+  CONSTRAINT `clothes_clothes_size_id_0afdf6a8_fk` FOREIGN KEY (`size_id`) REFERENCES `clothes_size` (`id`),
+  CONSTRAINT `clothes_clothes_chk_1` CHECK ((`quantity` >= 0))
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clothes_clothes`
+--
+
+LOCK TABLES `clothes_clothes` WRITE;
+/*!40000 ALTER TABLE `clothes_clothes` DISABLE KEYS */;
+INSERT INTO `clothes_clothes` VALUES (1,1,1,1,2,99.99,49,'Nike Red T-Shirt'),(2,2,2,3,3,129.99,40,'Adidas Blue Jacket'),(3,3,3,4,1,79.99,60,'Puma Green Sneakers'),(4,4,4,5,4,59.99,30,'Reebok Black Hoodie'),(5,5,5,6,5,89.99,45,'Under Armour White Shorts'),(6,6,6,7,6,110.00,25,'Fila Pink Dress'),(7,7,7,8,7,85.99,35,'New Balance Purple Running Shoes'),(8,8,8,9,8,75.00,50,'Converse Orange Sneakers'),(9,9,9,10,9,55.50,20,'Asics Gray Sweatshirt'),(10,10,10,2,10,120.00,15,'Vans Yellow Jacket');
+/*!40000 ALTER TABLE `clothes_clothes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `clothes_color`
+--
+
+DROP TABLE IF EXISTS `clothes_color`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `clothes_color` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `hex_code` varchar(7) NOT NULL,
+  `category` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `hex_code` (`hex_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clothes_color`
+--
+
+LOCK TABLES `clothes_color` WRITE;
+/*!40000 ALTER TABLE `clothes_color` DISABLE KEYS */;
+INSERT INTO `clothes_color` VALUES (1,'Red','#FF0000','Warm'),(2,'Blue','#0000FF','Cool'),(3,'Green','#008000','Cool'),(4,'Black','#000000','Neutral'),(5,'White','#FFFFFF','Neutral'),(6,'Yellow','#FFFF00','Warm'),(7,'Purple','#800080','Cool'),(8,'Orange','#FFA500','Warm'),(9,'Pink','#FFC0CB','Warm'),(10,'Gray','#808080','Neutral');
+/*!40000 ALTER TABLE `clothes_color` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `clothes_material`
+--
+
+DROP TABLE IF EXISTS `clothes_material`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `clothes_material` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `type` varchar(100) NOT NULL,
+  `durability` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `type` (`type`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clothes_material`
+--
+
+LOCK TABLES `clothes_material` WRITE;
+/*!40000 ALTER TABLE `clothes_material` DISABLE KEYS */;
+INSERT INTO `clothes_material` VALUES (1,'Cotton','High'),(2,'Polyester','Medium'),(3,'Leather','High'),(4,'Wool','Medium'),(5,'Nylon','Low'),(6,'Silk','Low'),(7,'Denim','High'),(8,'Linen','Medium'),(9,'Fleece','Medium'),(10,'Spandex','Low');
+/*!40000 ALTER TABLE `clothes_material` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `clothes_size`
+--
+
+DROP TABLE IF EXISTS `clothes_size`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `clothes_size` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `size` varchar(10) NOT NULL,
+  `description` longtext,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `size` (`size`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clothes_size`
+--
+
+LOCK TABLES `clothes_size` WRITE;
+/*!40000 ALTER TABLE `clothes_size` DISABLE KEYS */;
+INSERT INTO `clothes_size` VALUES (1,'S','Small size for slim body type'),(2,'M','Medium size for average body type'),(3,'L','Large size for slightly larger body type'),(4,'XL','Extra Large size for larger body type'),(5,'XXL','Double Extra Large size for bigger body type'),(6,'XS','Extra Small size for petite body type'),(7,'M-L','Size that is between medium and large'),(8,'L-XL','Size that is between large and extra large'),(9,'XXS','Double Extra Small size for very petite body type'),(10,'3XL','Triple Extra Large size for plus-size body type');
+/*!40000 ALTER TABLE `clothes_size` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer_address`
+--
+
+DROP TABLE IF EXISTS `customer_address`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `customer_address` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `street` varchar(255) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `zip_code` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer_address`
+--
+
+LOCK TABLES `customer_address` WRITE;
+/*!40000 ALTER TABLE `customer_address` DISABLE KEYS */;
+INSERT INTO `customer_address` VALUES (1,'Bắc từ liêm','Hà Nội','Hà Nội','10000'),(2,'Bắc từ liêm','Hà Nội','Hà Nội','10000');
+/*!40000 ALTER TABLE `customer_address` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer_customer`
+--
+
+DROP TABLE IF EXISTS `customer_customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `customer_customer` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `email` varchar(254) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `address_id` bigint NOT NULL,
+  `full_name_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `address_id` (`address_id`),
+  UNIQUE KEY `full_name_id` (`full_name_id`),
+  CONSTRAINT `customer_customer_address_id_2e18ff6d_fk_customer_address_id` FOREIGN KEY (`address_id`) REFERENCES `customer_address` (`id`),
+  CONSTRAINT `customer_customer_full_name_id_7ff26762_fk_customer_fullname_id` FOREIGN KEY (`full_name_id`) REFERENCES `customer_fullname` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer_customer`
+--
+
+LOCK TABLES `customer_customer` WRITE;
+/*!40000 ALTER TABLE `customer_customer` DISABLE KEYS */;
+INSERT INTO `customer_customer` VALUES (1,'hang@gmail.com','0341231241',1,1),(2,'hang2@gmail.com','0341232241',2,2);
+/*!40000 ALTER TABLE `customer_customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer_fullname`
+--
+
+DROP TABLE IF EXISTS `customer_fullname`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `customer_fullname` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer_fullname`
+--
+
+LOCK TABLES `customer_fullname` WRITE;
+/*!40000 ALTER TABLE `customer_fullname` DISABLE KEYS */;
+INSERT INTO `customer_fullname` VALUES (1,'Phạm','Hằng'),(2,'Phạm','Hằng2');
+/*!40000 ALTER TABLE `customer_fullname` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_admin_log`
+--
+
+DROP TABLE IF EXISTS `django_admin_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `django_admin_log` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `action_time` datetime(6) NOT NULL,
+  `object_id` longtext,
+  `object_repr` varchar(200) NOT NULL,
+  `action_flag` smallint unsigned NOT NULL,
+  `change_message` longtext NOT NULL,
+  `content_type_id` int DEFAULT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `django_admin_log_content_type_id_c4bce8eb_fk_django_co` (`content_type_id`),
+  KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
+  CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
+  CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `django_admin_log_chk_1` CHECK ((`action_flag` >= 0))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+LOCK TABLES `django_admin_log` WRITE;
+/*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_content_type`
+--
+
+DROP TABLE IF EXISTS `django_content_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `django_content_type` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `app_label` varchar(100) NOT NULL,
+  `model` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_content_type`
+--
+
+LOCK TABLES `django_content_type` WRITE;
+/*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
+INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(3,'auth','group'),(2,'auth','permission'),(4,'auth','user'),(12,'book','author'),(15,'book','book'),(13,'book','genre'),(14,'book','publisher'),(35,'cart','cartitem'),(27,'clothes','brand'),(31,'clothes','clothes'),(28,'clothes','color'),(29,'clothes','material'),(30,'clothes','size'),(5,'contenttypes','contenttype'),(7,'customer','address'),(9,'customer','customer'),(8,'customer','fullname'),(16,'laptop','brand'),(17,'laptop','gpu'),(20,'laptop','laptop'),(18,'laptop','screen'),(19,'laptop','storage'),(21,'mobile','battery'),(22,'mobile','brand'),(23,'mobile','camera'),(26,'mobile','mobile'),(24,'mobile','screen'),(25,'mobile','storage'),(32,'order','order'),(33,'order','orderitem'),(38,'paying','payment'),(34,'product','product'),(37,'recommendation','recommendation'),(10,'regular','regularcustomer'),(36,'review','review'),(6,'sessions','session'),(39,'shipping','shipping'),(11,'vip','vipcustomer');
+/*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_migrations`
+--
+
+DROP TABLE IF EXISTS `django_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `django_migrations` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `app` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `applied` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_migrations`
+--
+
+LOCK TABLES `django_migrations` WRITE;
+/*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2025-04-02 00:36:25.771767'),(2,'auth','0001_initial','2025-04-02 00:36:26.003177'),(3,'admin','0001_initial','2025-04-02 00:36:26.679363'),(4,'admin','0002_logentry_remove_auto_add','2025-04-02 00:36:26.836611'),(5,'admin','0003_logentry_add_action_flag_choices','2025-04-02 00:36:26.849300'),(6,'contenttypes','0002_remove_content_type_name','2025-04-02 00:36:26.992151'),(7,'auth','0002_alter_permission_name_max_length','2025-04-02 00:36:27.086218'),(8,'auth','0003_alter_user_email_max_length','2025-04-02 00:36:27.118708'),(9,'auth','0004_alter_user_username_opts','2025-04-02 00:36:27.132386'),(10,'auth','0005_alter_user_last_login_null','2025-04-02 00:36:27.212720'),(11,'auth','0006_require_contenttypes_0002','2025-04-02 00:36:27.219865'),(12,'auth','0007_alter_validators_add_error_messages','2025-04-02 00:36:27.233995'),(13,'auth','0008_alter_user_username_max_length','2025-04-02 00:36:27.336641'),(14,'auth','0009_alter_user_last_name_max_length','2025-04-02 00:36:27.425072'),(15,'auth','0010_alter_group_name_max_length','2025-04-02 00:36:27.454476'),(16,'auth','0011_update_proxy_permissions','2025-04-02 00:36:27.469251'),(17,'auth','0012_alter_user_first_name_max_length','2025-04-02 00:36:27.567729'),(18,'product','0001_initial','2025-04-02 00:36:27.611102'),(19,'book','0001_initial','2025-04-02 00:36:27.788627'),(20,'book','0002_alter_book_language_alter_author_birth_date_and_more','2025-04-02 00:36:29.466493'),(21,'book','0003_book_price_book_quantity','2025-04-02 00:36:29.674198'),(22,'book','0004_alter_genre_name','2025-04-02 00:36:29.718797'),(23,'book','0005_auto_20250402_0036','2025-04-02 00:36:30.652541'),(24,'cart','0001_initial','2025-04-02 00:36:30.697303'),(25,'cart','0002_alter_cartitem_category_alter_cartitem_quantity','2025-04-02 00:36:30.897059'),(26,'cart','0003_remove_cartitem_name_remove_cartitem_price','2025-04-02 00:36:31.006172'),(27,'cart','0004_cartitem_name_cartitem_price','2025-04-02 00:36:31.139084'),(28,'cart','0005_cartitem_customer_id','2025-04-02 00:36:31.212786'),(29,'cart','0006_auto_20250402_0036','2025-04-02 00:36:31.291565'),(30,'clothes','0001_initial','2025-04-02 00:36:31.469393'),(31,'clothes','0002_brand_established_year_color_category_and_more','2025-04-02 00:36:32.071974'),(32,'clothes','0003_clothes_price_clothes_quantity','2025-04-02 00:36:32.296110'),(33,'clothes','0004_clothes_name','2025-04-02 00:36:32.387138'),(34,'clothes','0005_auto_20250402_0036','2025-04-02 00:36:33.641438'),(36,'customer','0002_auto_20250402_0036','2025-04-02 00:36:34.544705'),(37,'laptop','0001_initial','2025-04-02 00:36:34.743962'),(38,'laptop','0002_brand_country_brand_founded_year_gpu_manufacturer_and_more','2025-04-02 00:36:35.858416'),(39,'laptop','0003_laptop_quantity_alter_laptop_price','2025-04-02 00:36:36.105091'),(40,'laptop','0004_alter_laptop_name','2025-04-02 00:36:36.184513'),(41,'laptop','0005_auto_20250402_0036','2025-04-02 00:36:37.423704'),(42,'mobile','0001_initial','2025-04-02 00:36:37.652696'),(43,'mobile','0002_mobile_price_mobile_quantity','2025-04-02 00:36:38.308065'),(44,'mobile','0003_mobile_name','2025-04-02 00:36:38.393012'),(45,'mobile','0004_auto_20250402_0036','2025-04-02 00:36:40.046610'),(46,'order','0001_initial','2025-04-02 00:36:40.128905'),(47,'order','0002_remove_order_created_at_order_customer_id_and_more','2025-04-02 00:36:40.655676'),(48,'order','0003_auto_20250402_0036','2025-04-02 00:36:40.965565'),(49,'paying','0001_initial','2025-04-02 00:36:41.005280'),(50,'paying','0002_auto_20250402_0036','2025-04-02 00:36:41.067859'),(51,'product','0002_remove_product_created_at_remove_product_price_and_more','2025-04-02 00:36:41.272911'),(52,'product','0003_rename_external_id_product_id_product_detail_and_more','2025-04-02 00:36:41.353625'),(53,'product','0004_alter_product_name','2025-04-02 00:36:41.407737'),(54,'product','0005_product_quantity','2025-04-02 00:36:41.461785'),(55,'product','0006_auto_20250402_0036','2025-04-02 00:36:41.529726'),(56,'recommendation','0001_initial','2025-04-02 00:36:41.572662'),(57,'recommendation','0002_auto_20250402_0036','2025-04-02 00:36:41.644251'),(58,'regular','0001_initial','2025-04-02 00:36:41.683281'),(59,'regular','0002_auto_20250402_0036','2025-04-02 00:36:41.752411'),(60,'review','0001_initial','2025-04-02 00:36:41.799202'),(61,'review','0002_review_category_alter_review_rating','2025-04-02 00:36:41.878825'),(62,'review','0003_auto_20250402_0036','2025-04-02 00:36:41.962649'),(63,'sessions','0001_initial','2025-04-02 00:36:42.002517'),(64,'shipping','0001_initial','2025-04-02 00:36:42.066097'),(65,'shipping','0002_auto_20250402_0036','2025-04-02 00:36:42.140098'),(66,'vip','0001_initial','2025-04-02 00:36:42.177705'),(67,'vip','0002_auto_20250402_0036','2025-04-02 00:36:42.249709'),(68,'book','0006_alter_author_id_alter_book_id_alter_genre_id_and_more','2025-04-03 03:53:17.885342'),(69,'cart','0007_alter_cartitem_id','2025-04-03 03:53:17.938793'),(70,'clothes','0006_alter_brand_id_alter_clothes_id_alter_color_id_and_more','2025-04-03 03:53:18.847001'),(71,'book','0002_book_name','2025-04-09 14:03:31.722871'),(72,'customer','0001_initial','2025-04-09 14:11:27.237504'),(73,'cart','0002_alter_cartitem_category','2025-04-09 15:24:24.508001'),(74,'cart','0003_alter_cartitem_category','2025-04-09 15:27:09.877010'),(75,'cart','0004_alter_cartitem_category','2025-04-09 15:32:16.040786');
+/*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_session`
+--
+
+DROP TABLE IF EXISTS `django_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `django_session` (
+  `session_key` varchar(40) NOT NULL,
+  `session_data` longtext NOT NULL,
+  `expire_date` datetime(6) NOT NULL,
+  PRIMARY KEY (`session_key`),
+  KEY `django_session_expire_date_a5c62663` (`expire_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_session`
+--
+
+LOCK TABLES `django_session` WRITE;
+/*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
+/*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `laptop_brand`
+--
+
+DROP TABLE IF EXISTS `laptop_brand`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `laptop_brand` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `founded_year` int,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `laptop_brand`
+--
+
+LOCK TABLES `laptop_brand` WRITE;
+/*!40000 ALTER TABLE `laptop_brand` DISABLE KEYS */;
+INSERT INTO `laptop_brand` VALUES (1,'Dell','USA',1984),(2,'HP','USA',1939),(3,'Apple','USA',1976),(4,'Lenovo','China',1984),(5,'Asus','Taiwan',1989),(6,'Acer','Taiwan',1976),(7,'MSI','Taiwan',1986),(8,'Razer','USA',2005),(9,'Samsung','South Korea',1938),(10,'Toshiba','Japan',1875);
+/*!40000 ALTER TABLE `laptop_brand` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `laptop_gpu`
+--
+
+DROP TABLE IF EXISTS `laptop_gpu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `laptop_gpu` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `manufacturer` varchar(100) DEFAULT NULL,
+  `vram` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `laptop_gpu`
+--
+
+LOCK TABLES `laptop_gpu` WRITE;
+/*!40000 ALTER TABLE `laptop_gpu` DISABLE KEYS */;
+INSERT INTO `laptop_gpu` VALUES (1,'GeForce GTX 1650','NVIDIA','4GB'),(2,'GeForce RTX 3060','NVIDIA','6GB'),(3,'GeForce RTX 3080','NVIDIA','10GB'),(4,'Radeon RX 580','AMD','8GB'),(5,'Radeon RX 6700M','AMD','12GB'),(6,'Intel Iris Xe','Intel','4GB'),(7,'GeForce GTX 1050 Ti','NVIDIA','4GB'),(8,'Radeon Vega 8','AMD','2GB'),(9,'GeForce GTX 1660 Ti','NVIDIA','6GB'),(10,'GeForce RTX 3070','NVIDIA','8GB');
+/*!40000 ALTER TABLE `laptop_gpu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `laptop_laptop`
+--
+
+DROP TABLE IF EXISTS `laptop_laptop`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `laptop_laptop` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `brand_id` int NOT NULL,
+  `gpu_id` int DEFAULT NULL,
+  `screen_id` int DEFAULT NULL,
+  `storage_id` int DEFAULT NULL,
+  `release_year` int DEFAULT NULL,
+  `weight` double DEFAULT NULL,
+  `quantity` int unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `laptop_laptop_brand_id_11a768bb_fk` (`brand_id`),
+  KEY `laptop_laptop_gpu_id_65c81430_fk` (`gpu_id`),
+  KEY `laptop_laptop_screen_id_8f8a551a_fk` (`screen_id`),
+  KEY `laptop_laptop_storage_id_73e2a231_fk` (`storage_id`),
+  CONSTRAINT `laptop_laptop_brand_id_11a768bb_fk` FOREIGN KEY (`brand_id`) REFERENCES `laptop_brand` (`id`),
+  CONSTRAINT `laptop_laptop_gpu_id_65c81430_fk` FOREIGN KEY (`gpu_id`) REFERENCES `laptop_gpu` (`id`),
+  CONSTRAINT `laptop_laptop_screen_id_8f8a551a_fk` FOREIGN KEY (`screen_id`) REFERENCES `laptop_screen` (`id`),
+  CONSTRAINT `laptop_laptop_storage_id_73e2a231_fk` FOREIGN KEY (`storage_id`) REFERENCES `laptop_storage` (`id`),
+  CONSTRAINT `laptop_laptop_chk_1` CHECK ((`quantity` >= 0))
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `laptop_laptop`
+--
+
+LOCK TABLES `laptop_laptop` WRITE;
+/*!40000 ALTER TABLE `laptop_laptop` DISABLE KEYS */;
+INSERT INTO `laptop_laptop` VALUES (31,'Dell XPS 13',999.99,1,1,1,21,2021,1.2,70),(32,'HP Spectre x360',1299.99,2,2,2,22,2020,1.3,40),(33,'MacBook Air M1',999.99,3,6,3,23,2020,1.29,60),(34,'Lenovo ThinkPad X1',1499.99,4,3,4,24,2021,1.1,30),(35,'Asus ZenBook 14',899.99,5,1,5,25,2021,1.4,70),(36,'Acer Aspire 5',699.99,6,4,6,26,2021,1.5,80),(37,'MSI Stealth GS66',1799.99,7,5,7,27,2020,2,25),(38,'Razer Blade 15',1599.99,8,3,8,28,2021,2.1,15),(39,'Samsung Galaxy Book Pro',999.99,9,2,9,29,2021,1,60),(40,'Toshiba Satellite L55',499.99,10,4,10,30,2019,1.8,100);
+/*!40000 ALTER TABLE `laptop_laptop` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `laptop_screen`
+--
+
+DROP TABLE IF EXISTS `laptop_screen`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `laptop_screen` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `size` varchar(50) NOT NULL,
+  `refresh_rate` int DEFAULT NULL,
+  `resolution` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `size` (`size`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `laptop_screen`
+--
+
+LOCK TABLES `laptop_screen` WRITE;
+/*!40000 ALTER TABLE `laptop_screen` DISABLE KEYS */;
+INSERT INTO `laptop_screen` VALUES (1,'13.3\" Full HD',NULL,'1920x1080'),(2,'14\" Full HD',NULL,'1920x1080'),(3,'13.3\" Retina',NULL,'2560x1600'),(4,'15.6\" Full HD',NULL,'1920x1080'),(5,'14\" QHD',NULL,'2560x1440'),(6,'15.6\" 4K',NULL,'3840x2160'),(7,'15.6\" QHD',NULL,'2560x1440'),(8,'17.3\" Full HD',NULL,'1920x1080'),(9,'13.3\" HD',NULL,'1920x1080'),(10,'15.6\" HD',NULL,'1366x768');
+/*!40000 ALTER TABLE `laptop_screen` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `laptop_storage`
+--
+
+DROP TABLE IF EXISTS `laptop_storage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `laptop_storage` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(50) NOT NULL,
+  `capacity` varchar(50) DEFAULT NULL,
+  `speed` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `type` (`type`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `laptop_storage`
+--
+
+LOCK TABLES `laptop_storage` WRITE;
+/*!40000 ALTER TABLE `laptop_storage` DISABLE KEYS */;
+INSERT INTO `laptop_storage` VALUES (21,'SSD_512GB','512GB','3500MB/s'),(22,'HDD_1TB','1TB','7200RPM'),(23,'SSD_1TB','1TB','5000MB/s'),(24,'SSD_256GB','256GB','3000MB/s'),(25,'HDD_2TB','2TB','5400RPM'),(26,'SSD_2TB','2TB','6000MB/s'),(27,'HDD_500GB','500GB','7200RPM'),(28,'SSD_128GB','128GB','2500MB/s'),(29,'SSD_256GB_2','256GB','3400MB/s'),(30,'HDD_500GB_2','500GB','5400RPM');
+/*!40000 ALTER TABLE `laptop_storage` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mobile_battery`
+--
+
+DROP TABLE IF EXISTS `mobile_battery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mobile_battery` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `capacity` int NOT NULL,
+  `type` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mobile_battery`
+--
+
+LOCK TABLES `mobile_battery` WRITE;
+/*!40000 ALTER TABLE `mobile_battery` DISABLE KEYS */;
+INSERT INTO `mobile_battery` VALUES (1,4000,'Li-ion'),(2,3500,'Li-ion'),(3,5000,'Li-polymer'),(4,4500,'Li-ion'),(5,3000,'Li-ion'),(6,5000,'Li-polymer'),(7,5500,'Li-ion'),(8,4800,'Li-polymer'),(9,4000,'Li-ion'),(10,6000,'Li-ion');
+/*!40000 ALTER TABLE `mobile_battery` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mobile_brand`
+--
+
+DROP TABLE IF EXISTS `mobile_brand`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mobile_brand` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `established_year` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mobile_brand`
+--
+
+LOCK TABLES `mobile_brand` WRITE;
+/*!40000 ALTER TABLE `mobile_brand` DISABLE KEYS */;
+INSERT INTO `mobile_brand` VALUES (1,'Samsung','South Korea',1938),(2,'Apple','USA',1976),(3,'Nokia','Finland',1865),(4,'Huawei','China',1987),(5,'Xiaomi','China',2010),(6,'OnePlus','China',2013),(7,'Sony','Japan',1946),(8,'LG','South Korea',1958),(9,'Motorola','USA',1928),(10,'Google','USA',1998);
+/*!40000 ALTER TABLE `mobile_brand` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mobile_camera`
+--
+
+DROP TABLE IF EXISTS `mobile_camera`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mobile_camera` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `resolution` varchar(50) NOT NULL,
+  `lens_count` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mobile_camera`
+--
+
+LOCK TABLES `mobile_camera` WRITE;
+/*!40000 ALTER TABLE `mobile_camera` DISABLE KEYS */;
+INSERT INTO `mobile_camera` VALUES (1,'48MP',2),(2,'64MP',3),(3,'12MP',2),(4,'108MP',4),(5,'16MP',1),(6,'32MP',2),(7,'48MP',3),(8,'12MP',1),(9,'64MP',2),(10,'50MP',4);
+/*!40000 ALTER TABLE `mobile_camera` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mobile_mobile`
+--
+
+DROP TABLE IF EXISTS `mobile_mobile`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mobile_mobile` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `battery_id` int DEFAULT NULL,
+  `brand_id` int NOT NULL,
+  `camera_id` int DEFAULT NULL,
+  `screen_id` int DEFAULT NULL,
+  `storage_id` int DEFAULT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `quantity` int unsigned NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `mobile_mobile_battery_id_e45e827f_fk` (`battery_id`),
+  KEY `mobile_mobile_brand_id_6cff9bc9_fk` (`brand_id`),
+  KEY `mobile_mobile_camera_id_36b155d8_fk` (`camera_id`),
+  KEY `mobile_mobile_screen_id_699f2de1_fk` (`screen_id`),
+  KEY `mobile_mobile_storage_id_334d9847_fk` (`storage_id`),
+  CONSTRAINT `mobile_mobile_battery_id_e45e827f_fk` FOREIGN KEY (`battery_id`) REFERENCES `mobile_battery` (`id`),
+  CONSTRAINT `mobile_mobile_brand_id_6cff9bc9_fk` FOREIGN KEY (`brand_id`) REFERENCES `mobile_brand` (`id`),
+  CONSTRAINT `mobile_mobile_camera_id_36b155d8_fk` FOREIGN KEY (`camera_id`) REFERENCES `mobile_camera` (`id`),
+  CONSTRAINT `mobile_mobile_screen_id_699f2de1_fk` FOREIGN KEY (`screen_id`) REFERENCES `mobile_screen` (`id`),
+  CONSTRAINT `mobile_mobile_storage_id_334d9847_fk` FOREIGN KEY (`storage_id`) REFERENCES `mobile_storage` (`id`),
+  CONSTRAINT `mobile_mobile_chk_1` CHECK ((`quantity` >= 0))
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mobile_mobile`
+--
+
+LOCK TABLES `mobile_mobile` WRITE;
+/*!40000 ALTER TABLE `mobile_mobile` DISABLE KEYS */;
+INSERT INTO `mobile_mobile` VALUES (1,1,1,1,1,1,999.99,98,'Samsung Galaxy S21'),(2,2,2,2,2,2,1099.99,40,'Apple iPhone 13'),(3,3,3,3,3,3,799.99,70,'Nokia 8.3 5G'),(4,4,4,4,4,4,849.99,60,'Huawei P40 Pro'),(5,5,5,5,5,5,499.99,80,'Xiaomi Mi 11'),(6,6,6,6,6,6,699.99,100,'OnePlus 9'),(7,7,7,7,7,7,999.99,30,'Sony Xperia 1 II'),(8,8,8,8,8,8,799.99,50,'LG Velvet'),(9,9,9,9,9,9,799.99,60,'Motorola Edge 20'),(10,10,10,10,10,10,699.99,75,'Google Pixel 6');
+/*!40000 ALTER TABLE `mobile_mobile` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mobile_screen`
+--
+
+DROP TABLE IF EXISTS `mobile_screen`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mobile_screen` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `size` double NOT NULL,
+  `resolution` varchar(50) NOT NULL,
+  `refresh_rate` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mobile_screen`
+--
+
+LOCK TABLES `mobile_screen` WRITE;
+/*!40000 ALTER TABLE `mobile_screen` DISABLE KEYS */;
+INSERT INTO `mobile_screen` VALUES (1,12312,'12',2),(2,6.5,'1080x2400',90),(3,6.1,'1125x2436',60),(4,6.7,'1440x3200',120),(5,6.4,'1080x2340',60),(6,6,'1080x2400',120),(7,6.8,'1440x3200',120),(8,5.8,'1125x2436',60),(9,6.5,'1080x2400',90),(10,6.3,'1080x2400',60),(11,6.6,'1440x3200',120);
+/*!40000 ALTER TABLE `mobile_screen` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mobile_storage`
+--
+
+DROP TABLE IF EXISTS `mobile_storage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mobile_storage` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(50) NOT NULL,
+  `size` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mobile_storage`
+--
+
+LOCK TABLES `mobile_storage` WRITE;
+/*!40000 ALTER TABLE `mobile_storage` DISABLE KEYS */;
+INSERT INTO `mobile_storage` VALUES (1,'SSD',64),(2,'SSD',128),(3,'SSD',256),(4,'HDD',32),(5,'SSD',512),(6,'SSD',128),(7,'HDD',256),(8,'SSD',256),(9,'HDD',512),(10,'SSD',128);
+/*!40000 ALTER TABLE `mobile_storage` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_order`
+--
+
+DROP TABLE IF EXISTS `order_order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order_order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `total_price` decimal(10,2) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `customer_id` int NOT NULL,
+  `order_date` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_order`
+--
+
+LOCK TABLES `order_order` WRITE;
+/*!40000 ALTER TABLE `order_order` DISABLE KEYS */;
+INSERT INTO `order_order` VALUES (1,150.50,'shipped',1,'2025-04-02 10:00:00.000000'),(2,200.75,'Shipped',2,'2025-04-02 11:30:00.000000'),(3,120.00,'Pending',3,'2025-04-02 12:00:00.000000'),(4,350.45,'Delivered',4,'2025-04-02 13:00:00.000000'),(5,180.30,'Shipped',5,'2025-04-02 14:00:00.000000'),(6,250.60,'Pending',6,'2025-04-02 15:30:00.000000'),(7,300.80,'Delivered',7,'2025-04-02 16:45:00.000000'),(8,400.00,'Shipped',8,'2025-04-02 17:00:00.000000'),(9,500.90,'Pending',9,'2025-04-02 18:00:00.000000'),(10,550.20,'Delivered',10,'2025-04-02 19:00:00.000000'),(11,399.80,'pending',1,'2025-04-09 15:48:37.715268');
+/*!40000 ALTER TABLE `order_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_orderitem`
+--
+
+DROP TABLE IF EXISTS `order_orderitem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order_orderitem` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `category` varchar(50) NOT NULL,
+  `product_id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `quantity` int unsigned NOT NULL,
+  `order_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `order_orderitem_order_id_aba34f44_fk` (`order_id`),
+  CONSTRAINT `order_orderitem_order_id_aba34f44_fk` FOREIGN KEY (`order_id`) REFERENCES `order_order` (`id`),
+  CONSTRAINT `order_orderitem_quantity_c9c4ab85_check` CHECK ((`quantity` >= 0))
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_orderitem`
+--
+
+LOCK TABLES `order_orderitem` WRITE;
+/*!40000 ALTER TABLE `order_orderitem` DISABLE KEYS */;
+INSERT INTO `order_orderitem` VALUES (1,'mobile',1,'Mobile A',100.50,2,1),(2,'laptop',2,'Laptop B',400.00,1,1),(3,'clothes',3,'Clothes C',20.00,5,2),(4,'book',4,'Book D',15.00,3,3),(5,'mobile',5,'Mobile F',150.00,1,4),(6,'laptop',6,'Laptop G',300.00,2,5),(7,'clothes',7,'Clothes H',25.00,4,6),(8,'book',8,'Book G',18.00,2,7),(9,'mobile',9,'Mobile I',120.00,3,8),(10,'laptop',10,'Laptop J',350.00,1,9),(11,'books',1,'Unknown',19.99,20,11);
+/*!40000 ALTER TABLE `order_orderitem` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `paying_payment`
+--
+
+DROP TABLE IF EXISTS `paying_payment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `paying_payment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `payment_date` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `paying_payment`
+--
+
+LOCK TABLES `paying_payment` WRITE;
+/*!40000 ALTER TABLE `paying_payment` DISABLE KEYS */;
+INSERT INTO `paying_payment` VALUES (1,1,1,150.50,'completed','2025-04-02 10:30:00.000000'),(2,2,2,200.75,'completed','2025-04-02 11:00:00.000000'),(3,3,3,120.00,'failed','2025-04-02 11:30:00.000000'),(4,4,4,350.45,'completed','2025-04-02 12:00:00.000000'),(5,5,5,180.30,'pending','2025-04-02 12:30:00.000000'),(6,6,6,250.60,'completed','2025-04-02 13:00:00.000000'),(7,7,7,300.80,'failed','2025-04-02 13:30:00.000000'),(8,8,8,400.00,'completed','2025-04-02 14:00:00.000000'),(9,9,9,500.90,'pending','2025-04-02 14:30:00.000000'),(10,10,10,550.20,'completed','2025-04-02 15:00:00.000000'),(11,1,1,150.50,'completed','2025-04-09 15:53:31.960880');
+/*!40000 ALTER TABLE `paying_payment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_product`
+--
+
+DROP TABLE IF EXISTS `product_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product_product` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `category` varchar(10) NOT NULL,
+  `id_product_detail` int DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_product`
+--
+
+LOCK TABLES `product_product` WRITE;
+/*!40000 ALTER TABLE `product_product` DISABLE KEYS */;
+INSERT INTO `product_product` VALUES (1,'Mobile A','mobile',1,50),(2,'Mobile B','mobile',2,50),(3,'Mobile C','mobile',3,200),(4,'Mobile D','mobile',4,75),(5,'Mobile E','mobile',5,150),(6,'Mobile F','mobile',6,25),(7,'Mobile G','mobile',7,35),(8,'Mobile H','mobile',8,50),(9,'Mobile I','mobile',9,60),(10,'Mobile J','mobile',10,75),(11,'Laptop A','laptop',1,30),(12,'Laptop B','laptop',2,40),(13,'Laptop C','laptop',3,50),(14,'Laptop D','laptop',4,60),(15,'Laptop E','laptop',5,70),(16,'Laptop F','laptop',6,80),(17,'Laptop G','laptop',7,90),(18,'Laptop H','laptop',8,100),(19,'Laptop I','laptop',9,110),(20,'Laptop J','laptop',10,120),(21,'Clothes A','clothes',1,200),(22,'Clothes B','clothes',2,210),(23,'Clothes C','clothes',3,220),(24,'Clothes D','clothes',4,230),(25,'Clothes E','clothes',5,240),(26,'Clothes F','clothes',6,250),(27,'Clothes G','clothes',7,260),(28,'Clothes H','clothes',8,270),(29,'Clothes I','clothes',9,280),(30,'Clothes J','clothes',10,290),(31,'Book A','book',1,10),(32,'Book B','book',2,20),(33,'Book C','book',3,30),(34,'Book D','book',4,40),(35,'Book E','book',5,50),(36,'Book F','book',6,60),(37,'Book G','book',7,70),(38,'Book H','book',8,80),(39,'Book I','book',9,90),(40,'Book J','book',10,100),(41,'Mobile A','mobile',1,50),(42,'Mobile B','mobile',2,60),(43,'Mobile C','mobile',3,70),(44,'Mobile D','mobile',4,80),(45,'Mobile E','mobile',5,90),(46,'Mobile F','mobile',6,100),(47,'Mobile G','mobile',7,110),(48,'Mobile H','mobile',8,120),(49,'Mobile I','mobile',9,130),(50,'Mobile J','mobile',10,140),(51,'Laptop A','laptop',1,30),(52,'Laptop B','laptop',2,40),(53,'Laptop C','laptop',3,50),(54,'Laptop D','laptop',4,60),(55,'Laptop E','laptop',5,70),(56,'Laptop F','laptop',6,80),(57,'Laptop G','laptop',7,90),(58,'Laptop H','laptop',8,100),(59,'Laptop I','laptop',9,110),(60,'Laptop J','laptop',10,120),(61,'Clothes A','clothes',1,200),(62,'Clothes B','clothes',2,210),(63,'Clothes C','clothes',3,220),(64,'Clothes D','clothes',4,230),(65,'Clothes E','clothes',5,240),(66,'Clothes F','clothes',6,250),(67,'Clothes G','clothes',7,260),(68,'Clothes H','clothes',8,270),(69,'Clothes I','clothes',9,280),(70,'Clothes J','clothes',10,290),(71,'Book A','book',1,10),(72,'Book B','book',2,20),(73,'Book C','book',3,30),(74,'Book D','book',4,40),(75,'Book E','book',5,50),(76,'Book F','book',6,60),(77,'Book G','book',7,70),(78,'Book H','book',8,80),(79,'Book I','book',9,90),(80,'Book J','book',10,100),(81,'Samsung Galaxy S21','mobile',NULL,120),(82,'HP Spectre x360','laptop',32,40),(83,'MacBook Air M1','laptop',33,60),(84,'Lenovo ThinkPad X1','laptop',34,30),(85,'Razer Blade 15','laptop',38,15);
+/*!40000 ALTER TABLE `product_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `recommendation_recommendation`
+--
+
+DROP TABLE IF EXISTS `recommendation_recommendation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `recommendation_recommendation` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `category` varchar(50) NOT NULL,
+  `score` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `recommendation_recommendation`
+--
+
+LOCK TABLES `recommendation_recommendation` WRITE;
+/*!40000 ALTER TABLE `recommendation_recommendation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `recommendation_recommendation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `regular_regularcustomer`
+--
+
+DROP TABLE IF EXISTS `regular_regularcustomer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `regular_regularcustomer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int NOT NULL,
+  `discount_rate` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `regular_regularcustomer`
+--
+
+LOCK TABLES `regular_regularcustomer` WRITE;
+/*!40000 ALTER TABLE `regular_regularcustomer` DISABLE KEYS */;
+INSERT INTO `regular_regularcustomer` VALUES (1,1,10),(2,2,15.5),(3,3,5),(4,4,20),(5,5,7.5),(6,6,12),(7,7,18),(8,8,25),(9,9,10),(10,10,8.5),(11,1,2),(12,1,2);
+/*!40000 ALTER TABLE `regular_regularcustomer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `review_review`
+--
+
+DROP TABLE IF EXISTS `review_review`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `review_review` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `rating` int NOT NULL,
+  `comment` longtext NOT NULL,
+  `category` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `review_review`
+--
+
+LOCK TABLES `review_review` WRITE;
+/*!40000 ALTER TABLE `review_review` DISABLE KEYS */;
+INSERT INTO `review_review` VALUES (1,1,1,5,'Excellent product, highly recommend!','mobile'),(2,2,2,4,'Good quality but a bit expensive.','laptop'),(3,3,3,3,'Average performance, could be better.','mobile'),(4,4,4,2,'Not satisfied, poor quality.','laptop'),(5,5,5,4,'Nice design and fast performance.','clothes'),(6,6,6,5,'Amazing quality, worth the price!','book'),(7,7,7,4,'Good value for money, but the battery life could be improved.','mobile'),(8,8,8,3,'Decent, but not great for gaming.','laptop'),(9,9,9,5,'Perfect, I am loving it!','book'),(10,10,10,4,'Comfortable and stylish, but sizing could be improved.','clothes'),(11,1,11,5,'Fantastic screen quality!','mobile'),(12,2,12,4,'Works great for everyday use.','laptop'),(13,3,13,2,'Too slow for my needs.','laptop'),(14,4,14,3,'Good for the price, but the camera could be better.','mobile'),(15,5,15,4,'Nice and comfy, great for casual wear.','clothes'),(16,6,16,5,'Loved the book, very engaging read!','book'),(17,7,17,4,'Good phone, but the screen scratches easily.','mobile'),(18,8,18,3,'Decent laptop, but needs improvement.','laptop'),(19,9,19,5,'Great quality, I will buy again!','book'),(20,10,20,4,'Stylish and affordable, great for everyday wear.','clothes'),(21,1,21,5,'Best phone I have ever owned!','mobile'),(22,2,22,4,'Nice performance, but battery drains fast.','laptop'),(23,3,23,3,'Decent laptop for work, but slow with gaming.','laptop'),(24,4,24,2,'Disappointed with the product quality.','mobile'),(25,5,25,4,'Comfortable and trendy, good for casual outings.','clothes'),(26,6,26,5,'Incredible book, a must-read for fantasy lovers!','book'),(27,7,27,4,'Great phone, but the camera could be better.','mobile'),(28,8,28,3,'Laptop works fine, but the keyboard is not comfortable.','laptop'),(29,9,29,5,'I loved the book, very well-written!','book'),(30,10,30,4,'Nice jacket, fits well and looks good.','clothes'),(31,1,31,5,'Awesome mobile, great features and speed!','mobile'),(32,2,32,4,'Good performance, a bit heavy for my liking.','laptop'),(33,3,33,3,'Average, but works fine for work tasks.','laptop'),(34,4,34,2,'Not a fan, disappointed with the product.','mobile'),(35,5,35,4,'Nice and cozy, good for winter!','clothes'),(36,6,36,5,'An excellent book, highly recommended!','book'),(37,7,37,4,'Great phone, but needs a better battery life.','mobile'),(38,8,38,3,'Laptop is okay, but it can get really hot after long use.','laptop'),(39,9,39,5,'A fantastic book, definitely worth the read!','book'),(40,10,40,4,'Nice hoodie, looks great and feels comfortable.','clothes'),(41,1,41,5,'Super fast mobile, I love it!','mobile'),(42,2,42,4,'Laptop works well, but the screen brightness is low.','laptop'),(43,3,43,3,'Average performance, could be better for gaming.','laptop'),(44,4,44,2,'Not worth the money, very poor quality.','mobile'),(45,5,45,4,'Great shoes, very comfortable!','clothes'),(46,1,1,3,'The product is okay, but not exceptional.','mobile'),(47,2,2,3,'It works fine, but could use some improvements.','laptop'),(48,3,3,3,'It’s decent, but nothing special.','mobile'),(49,4,4,3,'It meets my expectations, but there are better options out there.','laptop'),(50,5,5,3,'It’s comfortable, but doesn’t stand out from other brands.','clothes'),(51,6,6,3,'The book is fine, but I expected more.','book'),(52,7,7,3,'Good phone, but I’ve had better experiences with other brands.','mobile'),(53,8,8,3,'Laptop performs okay, but it’s a bit slow for heavy tasks.','laptop'),(54,9,9,3,'The book is fine for light reading, but not very engaging.','book'),(55,10,10,3,'It’s a decent outfit, but not my style.','clothes'),(56,1,11,3,'Screen quality is fine, but could use a little more brightness.','mobile'),(57,2,12,3,'Laptop is okay, but I wish it had more storage options.','laptop'),(58,3,13,3,'Laptop is decent for work, but struggles with high-performance tasks.','laptop'),(59,4,14,3,'Phone works fine, but it’s not great for gaming.','mobile'),(60,5,15,3,'Clothing is good, but not as comfortable as expected.','clothes'),(61,6,16,3,'The book is alright, but the plot was predictable.','book'),(62,7,17,3,'The phone is decent, but I’m not blown away by it.','mobile'),(63,8,18,3,'Laptop is fine for basic use, but struggles with multitasking.','laptop'),(64,9,19,3,'I liked the book, but it could have been better.','book'),(65,10,20,3,'Clothes are okay, but the fit is not perfect.','clothes'),(66,1,21,3,'Phone works well, but not as fast as I expected.','mobile'),(67,2,22,3,'Laptop is decent, but it gets hot quickly under load.','laptop'),(68,1,1,5,'Excellent mobile, super fast and the camera is amazing!','mobile'),(69,2,2,5,'This laptop is incredible! The performance is top-notch.','laptop'),(70,3,3,5,'Perfect for gaming! Smooth and responsive performance.','mobile'),(71,4,4,5,'This is by far the best laptop I have used. Worth every penny.','laptop'),(72,5,5,5,'This jacket fits perfectly and is very comfortable.','clothes'),(73,6,6,5,'Such a great book! Captivating from start to finish.','book'),(74,7,7,4,'Good phone, I love the design and performance.','mobile'),(75,8,8,4,'Laptop is solid, good build quality and decent battery life.','laptop'),(76,9,9,4,'The book is very interesting, kept me hooked the whole time.','book'),(77,10,10,4,'The clothes are really comfortable and stylish.','clothes'),(78,1,11,5,'Amazing screen quality and performance. Best phone I’ve had!','mobile'),(79,2,12,4,'Laptop is good for everyday tasks, very responsive.','laptop'),(80,3,13,5,'Perfect for work and gaming. Very powerful laptop.','laptop'),(81,4,14,5,'Great phone! Camera is exceptional and battery lasts long.','mobile'),(82,5,15,4,'Great outfit, very comfortable to wear.','clothes'),(83,6,16,5,'This book is an absolute masterpiece! Highly recommend it.','book'),(84,7,17,5,'Great mobile phone, fast, stylish, and durable.','mobile'),(85,8,18,5,'Laptop works smoothly, no lags. I am very satisfied.','laptop'),(86,9,19,5,'The book is really engaging and thought-provoking.','book'),(87,10,20,5,'Clothes are stylish and fit perfectly, great quality.','clothes'),(88,1,21,1,'The mobile is very slow and the camera quality is terrible.','mobile'),(89,2,22,1,'Laptop crashes frequently and has a poor battery life.','laptop'),(90,3,23,2,'The phone gets really hot and the battery drains quickly.','mobile'),(91,4,24,2,'Laptop is too slow for multitasking, very disappointed.','laptop'),(92,5,25,2,'The jacket doesn’t fit well, and the fabric feels cheap.','clothes'),(93,6,26,1,'This book was a waste of time, not interesting at all.','book'),(94,7,27,1,'Phone freezes constantly and the screen resolution is bad.','mobile'),(95,8,28,2,'Laptop is bulky and too heavy, not portable at all.','laptop'),(96,9,29,2,'The book is really boring and predictable.','book'),(97,10,30,1,'The clothes are uncomfortable and the material is poor.','clothes'),(98,1,31,1,'Terrible phone, the screen cracked too easily and performance is poor.','mobile'),(99,2,32,2,'Laptop overheats after short use, not suitable for gaming.','laptop'),(100,3,33,1,'Phone didn’t last a day without charging. Very disappointed.','mobile'),(101,4,34,2,'The laptop is way too slow for my work needs. Very frustrating.','laptop'),(102,5,35,2,'The jacket is uncomfortable and doesn’t keep me warm.','clothes'),(103,6,36,1,'This book was a total letdown, not engaging at all.','book'),(104,7,37,2,'Phone performance is sluggish, and the camera quality is poor.','mobile'),(105,8,38,2,'Laptop has a low-quality screen and very slow processing speed.','laptop'),(106,9,39,1,'The book is terrible, the plot is all over the place.','book'),(107,10,40,2,'The clothes are tight and uncomfortable, the material feels cheap.','clothes'),(108,1,1,5,'Excellent product, very satisfied with the performance!','mobile'),(109,1,2,4,'Good quality, but could be improved in terms of battery life.','mobile'),(110,1,3,3,'Average product, nothing special.','laptop'),(111,1,4,5,'The laptop is fantastic, works as expected!','laptop'),(112,1,5,2,'Not satisfied, the product broke within a week of use.','clothes'),(113,1,6,5,'Very comfortable and stylish, highly recommend it!','clothes'),(114,1,7,4,'Good shoes, but a little tight.','clothes'),(115,1,8,5,'Perfect for daily use, very durable.','clothes'),(116,1,9,3,'The camera quality could be better.','mobile'),(117,1,10,4,'Good phone, but could have more storage options.','mobile'),(118,1,11,5,'I love it! Great screen and performance.','laptop'),(119,1,12,4,'Nice watch, although the strap could be more comfortable.','clothes'),(120,1,13,4,'Laptop works great, but I wish it was lighter.','laptop'),(121,1,14,5,'Amazing quality, definitely worth the price!','laptop'),(122,1,15,3,'Average, not bad but not excellent either.','mobile'),(123,1,16,4,'The sound quality is amazing, great headphones!','mobile'),(124,1,17,5,'Love the style and fit of this jacket!','clothes'),(125,1,18,2,'Doesn’t fit well and the material is not as expected.','clothes'),(126,1,19,5,'Perfect fit, looks amazing with anything.','clothes'),(127,1,20,4,'The design is great, but the material is not as durable as I thought.','clothes'),(128,1,21,4,'The laptop is fast, but it could have better speakers.','laptop'),(129,1,22,5,'Love the color and feel, it’s amazing.','clothes'),(130,1,23,4,'Solid product, but not as fast as I expected.','mobile'),(131,1,24,3,'It’s okay but the performance doesn’t live up to the hype.','mobile'),(132,1,25,5,'Great product, highly recommend it for students!','laptop'),(133,1,26,4,'It’s good, but a little heavy for everyday use.','laptop'),(134,1,27,3,'Not a fan of the battery life, could be better.','mobile'),(135,1,28,5,'Really enjoying it, fast and reliable!','laptop'),(136,1,29,4,'Good overall, but the sound could be better.','mobile'),(137,1,30,5,'Highly recommend it, looks great and feels comfortable.','clothes'),(138,1,31,4,'Nice shoes, but a bit tight around the toes.','clothes'),(139,1,32,5,'Very happy with this purchase, great value for money.','laptop'),(140,1,33,3,'Okay product, nothing extraordinary.','laptop'),(141,1,34,4,'Great laptop for the price!','laptop'),(142,1,35,2,'Not worth the money, performance is poor.','mobile'),(143,1,36,5,'Best mobile phone I’ve ever had!','mobile'),(144,1,37,4,'Solid phone, but needs a better camera.','mobile'),(145,1,38,5,'Highly recommend, stylish and fast.','laptop'),(146,1,39,3,'Okay jacket, the fit is a bit loose.','clothes'),(147,1,40,5,'Fantastic product, would buy again.','mobile'),(148,1,41,2,'The material is flimsy, not worth it.','clothes'),(149,1,42,4,'Nice laptop, but it could use a bigger screen.','laptop'),(150,1,43,5,'Awesome jacket, very warm and cozy.','clothes'),(151,1,44,3,'Laptop is fine, but needs better specs for the price.','laptop'),(152,1,45,4,'Good value for money, performance is decent.','mobile'),(153,1,46,2,'Poor camera, not worth the money.','mobile'),(154,1,47,4,'Good but not perfect, still satisfied.','mobile'),(155,1,48,5,'Very comfortable shoes, I wear them daily!','clothes'),(156,1,49,3,'The material is not as good as expected, but decent.','clothes'),(157,1,50,4,'Pretty good for the price, but it could be lighter.','mobile'),(158,1,1,5,'An incredible read, very engaging and informative!','book'),(159,1,2,4,'Good book, but I feel like some parts were a bit too slow.','book'),(160,1,3,3,'It was an average book, could have been better in terms of storyline.','book'),(161,1,4,5,'Absolutely loved it! Couldn’t put it down, highly recommend.','book'),(162,1,5,2,'Didn’t enjoy this book as much, the writing style didn’t resonate with me.','book'),(163,1,1,5,'One of the best books I have ever read! Great characters and plot!','book'),(164,1,2,4,'Good book, but could have delved more into the character’s emotions.','book'),(165,1,3,5,'I really enjoyed this book, it had a great twist!','book'),(166,1,4,4,'Good, but the pacing could have been improved.','book'),(167,1,5,3,'It was okay, but I felt it lacked depth.','book'),(168,1,1,5,'This book was fantastic! I could relate to so much of it!','book'),(169,1,2,4,'Nice book, but I expected a little more from the ending.','book'),(170,1,3,3,'The book had a lot of potential, but it didn’t quite hit the mark.','book'),(171,1,4,5,'Such a great read, couldn’t stop reading until the very end!','book'),(172,1,5,2,'Not a fan of the book, couldn’t connect with the characters.','book'),(173,1,1,5,'A must-read for anyone interested in this genre. Loved it!','book'),(174,1,2,4,'Pretty good book, but I feel it was a bit predictable at times.','book'),(175,1,3,5,'Incredible book! The plot twist was unexpected and amazing!','book'),(176,1,4,3,'Decent book, but I feel the writing could have been stronger.','book'),(177,1,5,4,'I liked it, but it wasn’t as captivating as I hoped it would be.','book'),(178,1,1,5,'This book was mind-blowing! Can’t wait to read more from the author.','book'),(179,1,2,3,'The book was okay, but didn’t quite capture my attention fully.','book'),(180,1,3,4,'Good book with an interesting plot, but could use more character development.','book'),(181,1,4,5,'Loved every page of this book, can’t recommend it enough!','book'),(182,1,5,2,'I didn’t like this book. The storyline was predictable and boring.','book'),(183,1,1,4,'Great book, but it could have been a little shorter.','book'),(184,1,2,5,'Fantastic book, loved every moment of it!','book'),(185,1,3,4,'A good read, but there were some parts that dragged on.','book'),(186,1,4,5,'Such a good book! The ending was perfect and unexpected.','book'),(187,1,5,3,'It was okay, but the writing style didn’t do much for me.','book'),(188,1,1,4,'I really liked this book, but the middle part felt slow.','book'),(189,1,2,3,'It was an average read. Not the best, but not the worst either.','book'),(190,1,3,5,'One of the best books I have read in a while, highly recommend it!','book'),(191,1,4,5,'Amazing book! Full of suspense and thrilling moments.','book'),(192,1,5,2,'I couldn’t finish the book. It was just not my type.','book'),(193,1,1,5,'An amazing read! Kept me hooked from start to finish.','book'),(194,1,2,4,'Good book, but it could have had more character depth.','book'),(195,1,3,3,'The story was good but the pacing was off at times.','book'),(196,1,4,5,'I loved this book! It exceeded my expectations in every way.','book'),(197,1,5,3,'The plot was good, but the characters were a bit shallow.','book'),(198,1,1,4,'I really enjoyed this book, but the ending felt rushed.','book'),(199,1,2,5,'One of the best books I’ve read in years! A true masterpiece.','book'),(200,1,3,4,'This book was interesting, but it could have used a bit more action.','book'),(201,1,4,3,'It was an okay read, but I feel like it lacked some excitement.','book'),(202,1,5,4,'Good book, would recommend to anyone who likes this genre.','book'),(203,1,1,5,'Fantastic book, worth every minute spent reading it!','book'),(204,1,2,4,'I enjoyed this book, but it could have had a bit more conflict.','book'),(205,1,3,2,'I didn’t enjoy this book, it didn’t hold my interest.','book'),(206,1,4,5,'A fantastic read! I couldn’t put it down!','book'),(207,1,5,3,'Not bad, but could have been more exciting.','book'),(208,1,1,5,'An excellent book with a great storyline, would read again!','book'),(209,1,2,4,'A good book, but the character development could have been better.','book'),(210,1,3,5,'A masterpiece! Every page was exciting and full of suspense.','book'),(211,1,4,3,'It was okay, but it didn’t blow me away.','book'),(212,1,5,4,'I enjoyed it, but some parts felt a bit unnecessary.','book'),(213,1,1,5,'This book was amazing and very helpful!','book');
+/*!40000 ALTER TABLE `review_review` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shipping_shipping`
+--
+
+DROP TABLE IF EXISTS `shipping_shipping`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `shipping_shipping` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `shipped_date` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shipping_shipping`
+--
+
+LOCK TABLES `shipping_shipping` WRITE;
+/*!40000 ALTER TABLE `shipping_shipping` DISABLE KEYS */;
+INSERT INTO `shipping_shipping` VALUES (1,1,1,'123 Main St, City, Country','delivered','2025-04-09 16:07:56.542638'),(2,1,1,'123 Main St, City, Country','delivered','2025-04-09 16:08:13.898676'),(3,1,1,'123 Main St, City, Country','delivered','2025-04-09 16:09:20.005119');
+/*!40000 ALTER TABLE `shipping_shipping` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vip_vipcustomer`
+--
+
+DROP TABLE IF EXISTS `vip_vipcustomer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `vip_vipcustomer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int NOT NULL,
+  `membership_level` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vip_vipcustomer`
+--
+
+LOCK TABLES `vip_vipcustomer` WRITE;
+/*!40000 ALTER TABLE `vip_vipcustomer` DISABLE KEYS */;
+INSERT INTO `vip_vipcustomer` VALUES (1,1,'Gold'),(2,2,'Silver'),(3,3,'Platinum'),(4,4,'Gold'),(5,5,'Bronze'),(6,6,'Silver'),(7,7,'Platinum'),(8,8,'Gold'),(9,9,'Bronze'),(10,10,'Silver'),(11,1,'Gold'),(12,11,'GOLD'),(13,1,'GOLD');
+/*!40000 ALTER TABLE `vip_vipcustomer` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-04-10  0:41:55
