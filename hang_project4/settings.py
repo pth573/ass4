@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'review_analysis',
     'shipping',
     'rest_framework',
-    'rest_framework.authtoken',       
+    'rest_framework.authtoken',
+    'corsheaders',       
 ]
 
 REST_FRAMEWORK = {
@@ -63,6 +64,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,6 +73,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 ROOT_URLCONF = 'hang_project4.urls'
 
@@ -104,28 +108,28 @@ WSGI_APPLICATION = 'hang_project4.wsgi.application'
 # }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',  # Loại cơ sở dữ liệu sử dụng
-#         'NAME': 'django_db',  # Tên cơ sở dữ liệu
-#         'USER': 'django_user',  # Tên người dùng MySQL
-#         'PASSWORD': 'django_pass',  # Mật khẩu người dùng
-#         'HOST': 'localhost',  # Địa chỉ của máy chủ MySQL (thường là 'localhost' hoặc IP của máy chủ)
-#         'PORT': '3315',  # Cổng MySQL mặc định
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'django_db',  
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'django_db',
         'USER': 'django_user', 
         'PASSWORD': 'django_pass',  
-        'HOST': 'db', 
-        'PORT': '3306', 
+        'HOST': 'localhost',  
+        'PORT': '3315',  
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql', 
+#         'NAME': 'django_db',  
+#         'USER': 'django_user', 
+#         'PASSWORD': 'django_pass',  
+#         'HOST': 'db', 
+#         'PORT': '3306', 
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
